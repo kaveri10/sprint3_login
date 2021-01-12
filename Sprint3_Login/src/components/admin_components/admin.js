@@ -10,9 +10,10 @@ import { Tab, Tabs } from 'react-bootstrap'
 const AdminComponent = () => {
     return (
         <div>
-            <h1>Admin Services</h1>
             {/* All underlying operations from services */}
             <Accordion>
+
+
                 <Card>
                     <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">

@@ -2,7 +2,7 @@ import './App.css';
 
 //Internal Components
 import Logo from "./logo.svg"
-import HomeComponent from './components/home';
+import HomeComponent from './components/admin_components/home_admin';
 import AboutUsComponent from './components/about';
 
 
@@ -11,6 +11,8 @@ import { Route, Link, Switch } from 'react-router-dom';
 //Bootstrap
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
+import HomeAdminComponent from './components/admin_components/home_admin';
+import HomeUserComponent from './components/user_components/home_user';
 
 function App() {
   return (
@@ -37,7 +39,7 @@ function App() {
             <Link to='/about'>
               <Nav.Link href="#aboutus">About Us</Nav.Link>
             </Link>
-            <Nav.Link href="#link" disabled>Log Out</Nav.Link>
+            <Nav.Link href="#link">Log Out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -45,7 +47,8 @@ function App() {
 
       {/* Switching the content from nav operations */}
       <Switch>
-        <Route path='/' component={HomeComponent} exact />
+        <Route path='/admin' component={HomeAdminComponent} exact />
+        <Route path='/user' component={HomeUserComponent} exact />
         <Route path='/about' component={AboutUsComponent} exact />
       </Switch>
     </div>
