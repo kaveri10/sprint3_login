@@ -13,7 +13,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
 import HomeAdminComponent from './components/admin_components/home_admin';
 import HomeUserComponent from './components/user_components/home_user';
-
+import { LoginUserComponent } from './components/user_components/LoginUser';
 function App() {
   return (
     <div className="App">
@@ -49,7 +49,8 @@ function App() {
       <Switch>
         <Route path='/admin' component={HomeAdminComponent} exact />
         <Route path='/user' component={HomeUserComponent} exact />
-        <Route path='/about' component={AboutUsComponent} exact />
+        <Route path='/about' component={AboutUsComponent} exact/>
+        <LoginUserComponent></LoginUserComponent>
       </Switch>
     </div>
   );

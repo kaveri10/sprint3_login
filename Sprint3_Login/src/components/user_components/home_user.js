@@ -12,6 +12,7 @@ import RegisterUserComponent from '../user_components/RegisterUser';
 const HomeUserComponent = () => {
     return (
         <div>
+            
             <RegisterUserComponent></RegisterUserComponent>
         </div>
     );
