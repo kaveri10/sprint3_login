@@ -8,11 +8,23 @@ import { BrowserRouter } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import userReducer from './reducers/user_reducer';
+
+
+let store = createStore(userReducer, 
+  compose(applyMiddleware(ReduxThunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+store.subscribe(()=>console.log('Current State: ', store.getState()));
+
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+    <Provider store={store}>
+    <App />
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

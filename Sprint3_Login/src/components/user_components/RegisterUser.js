@@ -1,10 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import registerUserAction from '../../actions/register_user';
+import User from '../../models/User';
 import {} from '../css/registerUser.css';
 
+let dispatch;
+let history;
+
 export const RegisterUserComponent = (props) =>{
+    dispatch = useDispatch();
+    history = useHistory();
+    
     return(
         <div class="testbox">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div class="banner">
                     <h1>Register</h1>
                 </div>
@@ -26,9 +36,14 @@ export const RegisterUserComponent = (props) =>{
                 <div class="item">
                     Address
                         <input type="text" name="address" id="address" placeholder="Enter your Address" />
-                </div><div class="item">
+                </div>
+                <div class="item">
                     University Name
                         <input type="text" name="univname" id="univname" placeholder="Enter university name" />
+                </div>
+                <div class="item">
+                    Password
+                        <input type="password" name="pwd" id="pwd" placeholder="Enter password" />
                 </div>
                 
                     <div class="btn-block">
@@ -40,4 +55,31 @@ export const RegisterUserComponent = (props) =>{
 
 }
 
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const name = data.get('name');
+    const phone = data.get('phone');
+    const dob = data.get('dob');
+    const email = data.get('email');
+    const password = data.get('pwd');
+    const address = data.get('address');
+    const univname = data.get('univname');
+
+    if(name==='' || name===null) {
+        alert("Name cannot be blank");
+        return;
+    }
+    else if(!Number(phone)) {
+        alert("Phone must be a number");
+        return;
+    }
+    const userObj = new User(name, dob, email, password, phone, address,univname);
+    dispatch(registerUserAction(userObj));
+    history.push('/');
+}
+
+
 export default RegisterUserComponent;
+

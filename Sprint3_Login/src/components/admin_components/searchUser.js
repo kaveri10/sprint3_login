@@ -2,7 +2,6 @@ import { Form, Table, Jumbotron, Button } from 'react-bootstrap'
 
 const SearchUser = () => {
     return (
-        // All Final Operations and Functions
         <div style={{
             display: "flex",
             justifyContent: "center",
@@ -28,7 +27,12 @@ const SearchUser = () => {
                 </Form>
             </Jumbotron>
         </div>
+     
     );
 }
 
 export default SearchUser;
+
+/*
+       // All Final Operations and Functions
+        {/**/

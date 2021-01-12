@@ -1,5 +1,3 @@
-//Admin Services Component : CHECK WARNING.info FOR NOTES.....
-
 
 import SearchEmployee from './searchUser'
 
