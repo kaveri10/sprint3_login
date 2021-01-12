@@ -34,7 +34,8 @@ form {
 }
 .banner {
     position: relative;
-    height: 230px;
+    height: 350px;
+    background-image: url("https://roofandfloor.thehindu.com/real-estate-blog/wp-content/uploads/sites/14/2019/06/Registration-and-stamp-duty-fees-1-840x560.jpg");  
     background-size: cover;
     display: flex;
     justify-content: center;
