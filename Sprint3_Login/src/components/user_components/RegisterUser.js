@@ -9,38 +9,30 @@ export const RegisterUserComponent = (props) =>{
                     <h1>Register</h1>
                 </div>
                 <div class="item">
-                    <p>Name</p>
-                        <input type="text" name="name" placeholder="Enter your name" />
+                Name      <input type="text" name="name" id="name" placeholder="Enter your name" />
                 </div>
                 <div class="item">
-                    <p>Phone</p>
-                    <input type="text" name="phone" placeholder="### ### ####"/>
+                    Phone
+                    <input type="text" name="phone" id="phone" placeholder="### ### ####"/>
                 </div>
                 <div class="item">
-                    <p>Date Of Birth</p>
-                    <input type="date" id="dob" name="dob"/>
-                </div>
-
-                <div class="item">
-                    <p>Route</p>
-                    <select required>
-                    <option value="1">Mumbai-Pune</option>
-                    <option value="2">Pune-Mumbai</option>
-                    <option value="3">Nashik-Nagpur</option>
-                    <option value="4">Nagpur-Nashik</option>
-                    <option value="5">Mumbai-Surat</option>
-                    <option value="6">Surat-Mumbai</option>
-                    </select>
+                Date Of Birth
+                <input type="date" id="dob" name="dob"/>
                 </div>
                 <div class="item">
-                    <p>Vehicle Type</p>
-                    <select required>
-                    <option value="1">Car</option>
-                    <option value="2">Bus</option>
-                    </select>
+                    Email Id
+                    <input type="email" id="email" name="email" placeholder="e.g. abc12@yahoo.com" required/>
                 </div>
+                <div class="item">
+                    Address
+                        <input type="text" name="address" id="address" placeholder="Enter your Address" />
+                </div><div class="item">
+                    University Name
+                        <input type="text" name="univname" id="univname" placeholder="Enter university name" />
+                </div>
+                
                     <div class="btn-block">
-                    <button type="submit" href="/">Book</button>
+                    <button type="submit" href="/">Register</button>
                     </div>
         </form>
     </div>
