@@ -7,11 +7,12 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
 import RegisterUserComponent from '../user_components/RegisterUser';
-
+import { LoginUserComponent } from '../user_components/LoginUser';
 
 const HomeUserComponent = () => {
     return (
         <div>
+            
             <RegisterUserComponent></RegisterUserComponent>
         </div>
     );
