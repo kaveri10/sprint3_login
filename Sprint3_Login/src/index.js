@@ -21,11 +21,11 @@ store.subscribe(()=>console.log('Current State: ', store.getState()));
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
     <Provider store={store}>
+    <BrowserRouter>
     <App />
-    </Provider>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
