@@ -68,6 +68,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
                 alert("User Registered Successfully!!");                
             }) .catch(error => {
                 console.log("error Response:",error.response)
+                console.log("Response status got it  :"+error.response.data);
                 alert("User already exists");
                 
             });

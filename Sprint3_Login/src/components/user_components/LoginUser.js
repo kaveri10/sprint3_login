@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import UserLoginAction from '../../actions/loginAction';
 import Login from '../../models/Login';
 import {} from '../css/registerUser.css';
+import RegisterUserComponent from './RegisterUser';
 
 let dispatch;
 let history;
@@ -28,10 +29,10 @@ export const LoginUserComponent = (props) =>{
                         <input type="password" name="password" id="password" placeholder="Enter password" />
                 </div>
                 <div class="btn-submit">
-                    <button type="submit" href="/">Submit</button>
+                    <button type="submit" href="/welcome">Submit</button><br></br>&nbsp;
                 </div>
+               
             </form>
-            
         </div>
     );
 
@@ -52,8 +53,13 @@ function handleSubmit(event) {
     }
     
     const userObj = new Login(emailId, password);
-    dispatch(UserLoginAction(userObj));
-    history.push('/');
+    dispatch(UserLoginAction(userObj)).then(response => {
+        alert("Login Successful!!");
+     })
+     .catch(error => {
+        return Promise.reject(error.response)
+     });;
+    history.push('/welcome');
 }
 export default LoginUserComponent;
 
