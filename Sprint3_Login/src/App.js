@@ -48,9 +48,9 @@ function App() {
       {/* Switching the content from nav operations */}
       <Switch>
         <Route path='/admin' component={HomeAdminComponent} exact />
-        <Route path='/user' component={HomeUserComponent} exact />
+        <Route path='/' component={HomeUserComponent} exact />
         <Route path='/about' component={AboutUsComponent} exact/>
-        <LoginUserComponent></LoginUserComponent>
+       
       </Switch>
     </div>
   );

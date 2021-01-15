@@ -1,19 +1,34 @@
-//Home Component : CHECK WARNING.info FOR NOTES.....
 
-
-//Installed Components
-import { Route, Link, Switch } from 'react-router-dom';
-//Bootstrap
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Button } from 'react-bootstrap'; 
+import { Button } from 'bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 import RegisterUserComponent from '../user_components/RegisterUser';
+import LoginUserComponent from './LoginUser';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 const HomeUserComponent = () => {
     return (
         <div>
-            
-            <RegisterUserComponent></RegisterUserComponent>
+    <Card>
+        <Card.Header >
+                    <Accordion.Toggle variant="link" eventKey="0">
+                    Login
+                    </Accordion.Toggle>
+        </Card.Header>
+        <Card.Body>
+        <LoginUserComponent></LoginUserComponent>
+        </Card.Body>
+  </Card>
+  <Card>
+        <Card.Header >
+                    <Accordion.Toggle variant="link" eventKey="0">
+                    Register
+                    </Accordion.Toggle>
+        </Card.Header>
+        <Card.Body>
+        <RegisterUserComponent></RegisterUserComponent>
+        </Card.Body>
+  </Card>
         </div>
     );
 }

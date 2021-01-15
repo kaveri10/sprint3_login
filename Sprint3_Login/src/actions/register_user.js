@@ -15,12 +15,7 @@ let registerUserAction = (user) => {
                     { 
                         "Content-type": "application/json; charset=UTF-8"
                     }
-            ).then(response => {
-                return response
-             })
-             .catch(error => {
-                return Promise.reject(error.response)
-             });
+            );
               console.log('Response from server'+ res.data);
               dispatch({type: "REGISTER", payload: res.data});
         

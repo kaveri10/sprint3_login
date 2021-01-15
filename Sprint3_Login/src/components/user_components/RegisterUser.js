@@ -1,85 +1,119 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+ import { Formik, Form, Field } from 'formik';
+ import * as Yup from 'yup';
 import registerUserAction from '../../actions/register_user';
 import User from '../../models/User';
-import {} from '../css/registerUser.css';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import '../css/style.css';
 
 let dispatch;
 let history;
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
-export const RegisterUserComponent = (props) =>{
+ const DisplayingErrorMessagesSchema = Yup.object().shape({
+   name: Yup.string()
+   .matches(/([a-zA-Z\\s])/,"Please provide Valid name")
+     .min(2, 'Too Short!')
+     .max(50, 'Too Long!')
+     .required('Required'),
+   email: Yup.string().email('Invalid email').required('Required'),
+   password: Yup.string()
+      .required("No password provided.")
+      .min(8, "Password is too short - should be 8 chars minimum.")
+      .matches(/(?=.*[0-9])/, "Password must contain a number."),
+    address: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    univname: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    phone: Yup.string()
+        .matches(phoneRegExp, 'Phone number is not valid')
+
+ });
+ 
+ const RegisterUserComponent = () =>{
     dispatch = useDispatch();
     history = useHistory();
-    
-    return(
-        <div class="testbox">
-            <form onSubmit={handleSubmit}>
-                <div class="banner">
-                    <h1>Register</h1>
-                </div>
-                <div class="item">
-                Name      <input type="text" name="name" id="name" placeholder="Enter your name" />
-                </div>
-                <div class="item">
-                    Phone
-                    <input type="text" name="phone" id="phone" placeholder="### ### ####"/>
-                </div>
-                <div class="item">
-                Date Of Birth
-                <input type="date" id="dob" name="dob"/>
-                </div>
-                <div class="item">
-                    Email Id
-                    <input type="email" id="email" name="email" placeholder="e.g. abc12@yahoo.com" required/>
-                </div>
-                <div class="item">
-                    Address
-                        <input type="text" name="address" id="address" placeholder="Enter your Address" />
-                </div>
-                <div class="item">
-                    University Name
-                        <input type="text" name="univname" id="univname" placeholder="Enter university name" />
-                </div>
-                <div class="item">
-                    Password
-                        <input type="password" name="pwd" id="pwd" placeholder="Enter password" />
-                </div>
+    return (
+        <div>
+          <Formik
+            initialValues={{
+              name: '',
+              email: '',
+              phone: '',
+              dob: '',
+              password: '',
+              address: '',
+              univname:'',
+            }}
+            validationSchema={DisplayingErrorMessagesSchema}
+            onSubmit={values => {
+              // same shape as initial values
+              console.log(values);
+              const name = values.name;
+              const phone = values.phone;
+              const dob = values.dob;
+              const email = values.email;
+              const password = values.password;
+              const address =values.address;
+              const univname =values.univname;
+              const userObj = new User(name, dob, email, password, phone, address,univname);
+              console.log("user");
+              dispatch(registerUserAction(userObj)).then(response=>{
+                console.log("response:",response);
+                alert("User Registered Successfully!!");                
+            }) .catch(error => {
+                console.log("error Response:",error.response)
+                alert("User already exists");
                 
-                    <div class="btn-block">
-                    <button type="submit" href="/">Register</button>
-                    </div>
-        </form>
-    </div>
-    );
+            });
+              history.push('/');
+            }}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                 
+                    Name:
+                    <div class="item"><Field name="name" placeholder="Enter Name"/></div>
+                    {touched.name && errors.name && <div className="error">{errors.name}</div>}
+              
+                    Email id:
+                    <div class="item"><Field name="email" placeholder="Enter email(abc@xyz.com)"/></div>
+                    {touched.email && errors.email && <div  className="error">{errors.email}</div>}
+           
+                    Phone:
+                    <div class="item"><Field name="phone" placeholder="## ## ## ## ##"/></div>
+                    {touched.phone && errors.phone && <div className="error">{errors.phone}</div>}
+                
+                    Date of birth:
+                    <div class="item"><Field name="dob" type="date"/></div>
+                {touched.dob && errors.dob && <div className="error">{errors.dob}</div>}
+                
+                    Address:
+                    <div class="item"><Field name="address" placeholder="Enter Address"/></div>
+                {touched.address && errors.address && <div className="error">{errors.address}</div>}
+                
+                    University Name:
+                    <div class="item"><Field name="univname" placeholder="Enter University Name"/></div>
+                {touched.univname && errors.univname && <div className="error">{errors.univname}</div>}
+              
 
-}
-
-
-function handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const name = data.get('name');
-    const phone = data.get('phone');
-    const dob = data.get('dob');
-    const email = data.get('email');
-    const password = data.get('pwd');
-    const address = data.get('address');
-    const univname = data.get('univname');
-
-    if(name==='' || name===null) {
-        alert("Name cannot be blank");
-        return;
-    }
-    else if(!Number(phone)) {
-        alert("Phone must be a number");
-        return;
-    }
-    const userObj = new User(name, dob, email, password, phone, address,univname);
-    dispatch(registerUserAction(userObj));
-    history.push('/');
-}
-
-
-export default RegisterUserComponent;
+                    Password:
+                    <div class="item"><Field name="password" placeholder="Enter Password (e.g. X8df!90EO)"/></div>
+               {touched.password && errors.password && <div className="error">{errors.password}</div>}
+                
+                <button type="submit">Submit</button>
+                
+              </Form>
+            )}
+          </Formik>
+        </div>
+      );
+      
+ } 
+ export default RegisterUserComponent;
 

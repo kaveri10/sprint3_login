@@ -7,7 +7,7 @@ body, div, form, input, select, p {
     outline: none;
     font-family: Roboto, Arial, sans-serif;
     font-size: 14px;
-    color: #666;
+    color: black;
     line-height: 22px;
 }
 h1 {
@@ -15,7 +15,7 @@ h1 {
     margin: 0;
     line-height: 55px;
     font-size: 55px;
-    color: #fff;
+    color: brown;
     z-index: 2;
 }
 .testbox {
