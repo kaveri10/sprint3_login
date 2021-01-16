@@ -3,9 +3,9 @@ const userReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'REGISTER':
             return action.payload;
-       /* case 'SHOW_EMPLOYEES':
+       case 'LOGIN':
             return action.payload;
-        case 'SHOW_DEPARTMENTS':
+        /*case 'SHOW_DEPARTMENTS':
             return action.payload;*/
         default:
             return [];
