@@ -14,6 +14,7 @@ import { Button } from 'react-bootstrap';
 import HomeUserComponent from './components/user_components/home_user';
 import WelcomeComponent from './components/user_components/welcome';
 import RegisterUserComponent from './components/user_components/RegisterUserComponent';
+import { ContactForm } from './components/ContactUs';
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,9 @@ function App() {
             <Link to='/about'>
               <Nav.Link href="/about">About Us</Nav.Link>
             </Link>
+            <Link to='/contactus'>
+              <Nav.Link href="/contactus">Contact Us</Nav.Link>
+            </Link>
             <Link to='/'>
             <Nav.Link href="/">Log Out</Nav.Link>
             </Link>
@@ -48,6 +52,7 @@ function App() {
         <Route path='/welcome' component={WelcomeComponent} exact />
         <Route path='/' component={HomeUserComponent} exact />
         <Route path='/about' component={AboutUsComponent} exact/>
+        <Route path='/contactus' component={ContactForm} exact />
         <Route path='/register' component={RegisterUserComponent} exact/>
        
       </Switch>

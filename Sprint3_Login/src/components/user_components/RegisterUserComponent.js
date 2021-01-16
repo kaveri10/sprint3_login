@@ -33,11 +33,7 @@ const RegisterUserComponent = () => {
             <Jumbotron style={{ width: 600 }}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formGroupText">
-                        <Form.Label style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-        }}>Register</Form.Label>
+                        <Form.Label>Register</Form.Label>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicName">
@@ -47,19 +43,19 @@ const RegisterUserComponent = () => {
 
                     <Form.Group controlId="formBasicLocation">
                     <Form.Label>Enter DOB</Form.Label>
-                    <Form.Control type="date" id="DOB" name="loc" >
+                    <Form.Control type="date" id="dob" name="dob" >
                     </Form.Control>
                     </Form.Group>
                     
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Enter Email</Form.Label>
-                        <Form.Control type="email" id="Email" name="Email" placeholder="Enter Email" onBlur={validateUserEmail}/>
+                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" onBlur={validateUserEmail}/>
                     </Form.Group>
 
                     
                     <Form.Group controlId="formBasicPhoneNo.">
                         <Form.Label>Phone No.</Form.Label>
-                        <Form.Control type="Number"  id="no." name="no." onBlur={validatePhoneNumber}/>
+                        <Form.Control type="Number"  id="phone" name="phone" onBlur={validatePhoneNumber}/>
                     </Form.Group>                    
 
                     <Form.Group controlId="formBasicAddress">
@@ -74,7 +70,7 @@ const RegisterUserComponent = () => {
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Enter Password</Form.Label>
-                        <Form.Control type="password" id="Password" name="Password" placeholder="Enter Password" onBlur={validateUserPassword}/>
+                        <Form.Control type="password" id="pwd" name="pwd" placeholder="Enter Password" onBlur={validateUserPassword}/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicButton">
@@ -110,7 +106,6 @@ function validateUserName(event)
 
      let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
      let str = data;
-     console.log(regex, str);
 
      if(regex.test(str) && str != "" && str != null)
      {
@@ -144,7 +139,6 @@ function validateUserName(event)
 
     let regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     let str = data;
-    console.log(regex, str);
 
     if(regex.test(str) && str != "")
     {
@@ -161,7 +155,6 @@ function validateUserName(event)
 
      let regex = /^([A-Z][a-zA-Z]{3,})$/;
      let str = data;
-     console.log(regex, str);
 
      if(regex.test(str) && str !== "" && str != null)
      {
@@ -174,18 +167,17 @@ function validateUserName(event)
 
  function validateUnivname(event)
  {
-     const data = event.target.value;
+    const data = event.target.value;
 
      let regex = /^([A-Z][a-zA-Z]{3,})$/;
      let str = data;
-     console.log(regex, str);
 
-     if(regex.test(str) && str != "" && str != null)
+     if(regex.test(str) && str !== "" && str != null)
      {
      }
      else
      {
-         alert("Enter valid UnivName, it should only contain characters and cannot be null or blank!");
+        //alert("Enter valid UnivName, it should only contain characters and cannot be null or blank!");
      }
  }
  
@@ -204,11 +196,11 @@ function validateUserName(event)
     const univname = data.get('univname');
 
     const userObj = new User(name, dob, email, password, phone, address,univname);
-    console.log('User object', userObj);
     dispatch(registerUserAction(userObj)).then(response =>{
         alert("Registered successfully!!");
-      }).catch(status => {
+      }).catch(error => {
           alert("You are already registered!!");
+          return Promise.reject(error.response)
       });
     history.push('/');
 }

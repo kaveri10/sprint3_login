@@ -86,16 +86,18 @@ function validateUserEmail(event)
 function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    const emailId = data.get('emailId');
-    const password = data.get('password');
+    const emailId = data.get('Email');
+    const password = data.get('Password');
     
     const userObj = new Login(emailId, password);
     dispatch(UserLoginAction(userObj)).then(response => {
         alert("Login Successful!!");
+        history.push('/welcome');
      })
      .catch(error => {
+        alert("Invalid Email Or Password!");
         return Promise.reject(error.response)
      });;
-    history.push('/welcome');
+    
 }
 export default LoginUserComponent;
