@@ -13,7 +13,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
 import HomeUserComponent from './components/user_components/home_user';
 import WelcomeComponent from './components/user_components/welcome';
-import RegisterUserComponent from './components/user_components/RegisterUser';
+import RegisterUserComponent from './components/user_components/RegisterUserComponent';
 function App() {
   return (
     <div className="App">

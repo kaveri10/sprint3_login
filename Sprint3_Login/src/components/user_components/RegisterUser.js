@@ -6,6 +6,7 @@ import User from '../../models/User';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import '../css/style.css';
+import getUserAction from '../../actions/get_user';
 
 let dispatch;
 let history;
@@ -35,7 +36,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 
  });
  
- const RegisterUserComponent = () =>{
+ const RegisterUserCnt = () =>{
     dispatch = useDispatch();
     history = useHistory();
     return (
@@ -52,8 +53,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
             }}
             validationSchema={DisplayingErrorMessagesSchema}
             onSubmit={values => {
-              // same shape as initial values
-              console.log(values);
+              
               const name = values.name;
               const phone = values.phone;
               const dob = values.dob;
@@ -62,18 +62,27 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
               const address =values.address;
               const univname =values.univname;
               const userObj = new User(name, dob, email, password, phone, address,univname);
-              console.log("user");
-              dispatch(registerUserAction(userObj)).then(response=>{
-                console.log("response:",response);
-                alert("User Registered Successfully!!");                
-            }) .catch(error => {
-                console.log("error Response:",error.response)
-                console.log("Response status got it  :"+error.response.data);
-                alert("User already exists");  
-
-                
-                
-            });
+             // console.log("user");
+              const flag=0;
+             /* dispatch(getUserAction(userObj.emailId)).then(response=>{
+                alert("already exists");
+              }).catch(({ status, json }) => {
+                if (status >= 400) {
+                  alert("Please try again!!");
+                }
+                else{
+                  dispatch(registerUserAction(userObj)).then(response =>{
+                    console.log("User registered successfully!!");
+                    alert("User registered successfully!!");
+                  })
+                }
+              })*/
+              dispatch(registerUserAction(userObj)).then(response =>{
+                alert("Registered successfully!!");
+              }).catch(status => {
+                  alert("You are already registered!!");
+              });
+            
               history.push('/');
             }}
           >
@@ -106,7 +115,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
               
 
                     Password:
-                    <div class="item"><Field name="password" placeholder="Enter Password (e.g. X8df!90EO)"/></div>
+                    <div class="item"><Field name="password" type="password" placeholder="Enter Password (e.g. X8df!90EO)"/></div>
                {touched.password && errors.password && <div className="error">{errors.password}</div>}
                 
                 <button type="submit">Submit</button>
@@ -118,5 +127,5 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
       );
       
  } 
- export default RegisterUserComponent;
+ export default RegisterUserCnt;
 

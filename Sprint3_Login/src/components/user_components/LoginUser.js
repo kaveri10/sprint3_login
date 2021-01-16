@@ -4,53 +4,90 @@ import { useHistory } from 'react-router-dom';
 import UserLoginAction from '../../actions/loginAction';
 import Login from '../../models/Login';
 import {} from '../css/registerUser.css';
-import RegisterUserComponent from './RegisterUser';
+import { Form, Table, Jumbotron, Button } from 'react-bootstrap'
 
 let dispatch;
 let history;
+let email; 
+let password;
 
+ 
 export const LoginUserComponent = (props) =>{
     dispatch = useDispatch();
     history = useHistory();
 
-    return(
-        <div class="testbox">
-                <form onSubmit={handleSubmit}>
-                <div class="banner">
-                    <h1>Login</h1>
-                </div>
-                
-                <div class="item">
-                    Email Id
-                    <input type="emailId" id="emailId" name="emailId" placeholder="e.g. abc12@yahoo.com" required/>
-                </div>
-                <div class="item">
-                    Password
-                        <input type="password" name="password" id="password" placeholder="Enter password" />
-                </div>
-                <div class="btn-submit">
-                    <button type="submit" href="/welcome">Submit</button><br></br>&nbsp;
-                </div>
-               
-            </form>
+    return (
+        // All Final Operations and Functions
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+        }}>
+            <Jumbotron style={{ width: 700 }}>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formGroupText">
+                        <Form.Label>Login</Form.Label>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Enter Email</Form.Label>
+                        <Form.Control type="text" id="Email" name="Email" placeholder="Enter Email" onBlur={validateUserEmail}/>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Enter Password</Form.Label>
+                        <Form.Control type="password" id="Password" name="Password" placeholder="Enter Password" onBlur={validateUserPassword}/>
+                    </Form.Group>
+
+                    
+                    <Form.Group controlId="formBasicButton">
+                    <Button variant="dark" type="submit">Submit </Button>
+                    </Form.Group>
+  
+                    
+                </Form>
+            </Jumbotron>
         </div>
     );
 
 }
 
+function validateUserEmail(event)
+ {
+     const data = event.target.value;
+
+     let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+     let str = data;
+
+     if(regex.test(str) && str != "" && str != null)
+     {
+     }
+     else
+     {
+         alert("Enter valid Email");
+     }
+ }
+
+ function validateUserPassword(event)
+ {
+     const data = event.target.value;
+
+     let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+     let str = data;
+
+     if(regex.test(str) && str != "" && str != null)
+     {
+     }
+     else
+     {
+         alert("Enter valid password and Password must contain a number.");
+     }
+ }
 function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const emailId = data.get('emailId');
     const password = data.get('password');
-    if(emailId==='' || emailId===null) {
-        alert("emailId cannot be blank");
-        return;
-    }
-    else if(password==='' || password===null) {
-        alert("password cannot be blank");
-        return;
-    }
     
     const userObj = new Login(emailId, password);
     dispatch(UserLoginAction(userObj)).then(response => {
@@ -62,4 +99,3 @@ function handleSubmit(event) {
     history.push('/welcome');
 }
 export default LoginUserComponent;
-

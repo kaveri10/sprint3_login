@@ -5,8 +5,8 @@ const userReducer = (state=initialState, action) => {
             return action.payload;
        case 'LOGIN':
             return action.payload;
-        /*case 'SHOW_DEPARTMENTS':
-            return action.payload;*/
+        case 'GET_USER':
+            return action.payload;
         default:
             return [];
     }

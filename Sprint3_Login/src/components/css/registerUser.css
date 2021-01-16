@@ -1,7 +1,7 @@
 html, body {
     min-height: 100%;
 }
-body, div, form, input, select, p { 
+body, div, input, select, p { 
     padding: 0;
     margin: 0;
     outline: none;
@@ -26,7 +26,7 @@ h1 {
     padding: 20px;
 }
 form {
-    width: 100%;
+    width: 450px;
     padding: 20px;
     border-radius: 6px;
     background: #fff;
@@ -49,15 +49,24 @@ form {
     width: 100%;
     height: 100%;
 }
-input, select {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+
+
+input[type="email"],
+input[type="text"],
+input[type="number"]
+input[type="date"]
+input[type="password"] {
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--gray-200);
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-input {
-    width: calc(100% - 10px);
-    padding: 5px;
-}
+
 select {
     width: 100%;
     padding: 7px 0;
