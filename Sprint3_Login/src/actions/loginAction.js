@@ -1,13 +1,14 @@
 import axios from "axios";
 
-let UserLoginAction = (user) => {
+let UserLoginAction = (loginObj) => {
     
     return async function (dispatch) {
             const res = await axios.post(
                 "http://localhost:8080/myapp/user/login", {
                         
-                        emailId : user.emailId,
-                        password : user.password
+                        emailId : loginObj.emailId,
+                        password : loginObj.password,
+                        role: loginObj.role,
                         
                     }, 
                     { 

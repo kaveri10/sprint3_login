@@ -29,19 +29,19 @@ export const MultipleLoginComponent = (props) =>{
                         <Form.Label>Login</Form.Label>
                     </Form.Group>
 
-                    <Form.Control size="sm" as="select" id="role">
+                    <Form.Control size="sm" as="select" name="role">
                         <option>Admin</option>
                         <option>HR</option>
                         <option>User</option>
                     </Form.Control>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Enter Email</Form.Label>
-                        <Form.Control type="text" id="Email" name="Email" placeholder="Enter Email" onBlur={validateUserEmail}/>
+                        <Form.Control type="text" id="Email" name="email" placeholder="Enter Email" onBlur={validateUserEmail}/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Enter Password</Form.Label>
-                        <Form.Control type="password" id="Password" name="Password" placeholder="Enter Password" onBlur={validateUserPassword}/>
+                        <Form.Control type="password" id="Password" name="pwd" placeholder="Enter Password" onBlur={validateUserPassword}/>
                     </Form.Group>
 
                     
@@ -91,16 +91,22 @@ function validateUserEmail(event)
 function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    const emailId = data.get('emailId');
-    const password = data.get('password');
+    const emailId = data.get('email');
+    const password = data.get('pwd');
     const role = data.get('role');
-
-    const userObj = new Login(emailId, password,role);
-    dispatch(UserLoginAction(userObj)).then(response => {
+console.log(role);
+    const loginObj = new Login(emailId, password,role);
+    dispatch(UserLoginAction(loginObj)).then(response => {
         alert("Login Successful!!");
-        history.push('/welcome');
+        if(role==="HR"){
+            history.push('/');
+
+        }else{
+            history.push('/welcome');
+        }
      })
      .catch(error => {
+         alert("Invalid Credentials");
         return Promise.reject(error.response)
      });;
     
