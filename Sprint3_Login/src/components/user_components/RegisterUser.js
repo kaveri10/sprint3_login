@@ -61,8 +61,9 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
               const password = values.password;
               const address =values.address;
               const univname =values.univname;
-              const userObj = new User(name, dob, email, password, phone, address,univname);
-             // console.log("user");
+              const role = 'User';
+              const userObj = new User(name, dob, email, password, phone, address,univname,role);
+                           // console.log("user");
               const flag=0;
              /* dispatch(getUserAction(userObj.emailId)).then(response=>{
                 alert("already exists");

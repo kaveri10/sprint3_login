@@ -10,7 +10,8 @@ let registerUserAction = (user) => {
                         password : user.password,
                         phoneNo : user.phoneNo,
                         address : user.address,
-                        univName : user.univName   
+                        univName : user.univName,
+                        role : user.role 
                     }, 
                     { 
                         "Content-type": "application/json; charset=UTF-8"

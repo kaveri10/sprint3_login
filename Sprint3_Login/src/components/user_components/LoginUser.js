@@ -23,7 +23,7 @@ export const LoginUserComponent = (props) =>{
             justifyContent: "center",
             alignItems: "center"
         }}>
-            <Jumbotron style={{ width: 700 }}>
+            <Jumbotron style={{ width: 500 }}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formGroupText">
                         <Form.Label>Login</Form.Label>
@@ -89,7 +89,7 @@ function handleSubmit(event) {
     const emailId = data.get('Email');
     const password = data.get('Password');
     
-    const userObj = new Login(emailId, password);
+    const userObj = new Login(emailId, password,"User");
     dispatch(UserLoginAction(userObj)).then(response => {
         alert("Login Successful!!");
         history.push('/welcome');

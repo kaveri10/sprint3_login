@@ -30,7 +30,7 @@ const RegisterUserComponent = () => {
             justifyContent: "center",
             alignItems: "center"
         }} classNamee="col-md-4">
-            <Jumbotron style={{ width: 600 }}>
+            <Jumbotron style={{ width: 500 }}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formGroupText">
                         <Form.Label>Register</Form.Label>
@@ -194,8 +194,9 @@ function validateUserName(event)
     const password = data.get('pwd');
     const address = data.get('address');
     const univname = data.get('univname');
-
-    const userObj = new User(name, dob, email, password, phone, address,univname);
+    const role = 'User';
+    console.log(role);
+    const userObj = new User(name, dob, email, password, phone, address,univname,role);
     dispatch(registerUserAction(userObj)).then(response =>{
         alert("Registered successfully!!");
       }).catch(error => {

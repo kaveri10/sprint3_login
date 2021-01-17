@@ -36,9 +36,7 @@ function App() {
             <Link to='/about'>
               <Nav.Link href="/about">About Us</Nav.Link>
             </Link>
-            <Link to='/contactus'>
-              <Nav.Link href="/contactus">Contact Us</Nav.Link>
-            </Link>
+            
             <Link to='/'>
             <Nav.Link href="/">Log Out</Nav.Link>
             </Link>
@@ -52,7 +50,6 @@ function App() {
         <Route path='/welcome' component={WelcomeComponent} exact />
         <Route path='/' component={HomeUserComponent} exact />
         <Route path='/about' component={AboutUsComponent} exact/>
-        <Route path='/contactus' component={ContactForm} exact />
         <Route path='/register' component={RegisterUserComponent} exact/>
        
       </Switch>

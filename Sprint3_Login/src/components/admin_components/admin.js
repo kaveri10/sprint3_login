@@ -19,9 +19,9 @@ const AdminComponent = () => {
                     </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
-                    {/* Search an Employee component */}
+                   
                     <Card.Body><SearchEmployee></SearchEmployee></Card.Body>
-                    {/* Search an Employee component */}
+                 
                     </Accordion.Collapse>
                 </Card>
                 <Card>

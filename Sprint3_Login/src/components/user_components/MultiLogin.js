@@ -23,7 +23,7 @@ export const MultipleLoginComponent = (props) =>{
             justifyContent: "center",
             alignItems: "center"
         }}>
-            <Jumbotron style={{ width: 700 }}>
+            <Jumbotron style={{ width: 500 }}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formGroupText">
                         <Form.Label>Login</Form.Label>
@@ -31,7 +31,6 @@ export const MultipleLoginComponent = (props) =>{
 
                     <Form.Control size="sm" as="select" name="role">
                         <option>Admin</option>
-                        <option>HR</option>
                         <option>User</option>
                     </Form.Control>
                     <Form.Group controlId="formBasicEmail">
@@ -98,10 +97,10 @@ console.log(role);
     const loginObj = new Login(emailId, password,role);
     dispatch(UserLoginAction(loginObj)).then(response => {
         alert("Login Successful!!");
-        if(role==="HR"){
+        if(role==="Admin"){
             history.push('/');
 
-        }else{
+        }else if(role==="User"){
             history.push('/welcome');
         }
      })

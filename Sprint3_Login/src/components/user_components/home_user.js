@@ -8,8 +8,8 @@ import MultipleLoginComponent from './MultiLogin';
 const HomeUserComponent = () => {
     return (
         <div>
-       <LoginUserComponent></LoginUserComponent>
-       {/*<MultipleLoginComponent></MultipleLoginComponent>*/}
+       {/*<LoginUserComponent></LoginUserComponent>*/}
+       <MultipleLoginComponent></MultipleLoginComponent>
         </div>
     );
 }

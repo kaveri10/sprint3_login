@@ -15,7 +15,7 @@ const HomeAdminComponent = () => {
     return (
         <div>
             <h1>Admin Services</h1>
-            <AdminComponent></AdminComponent>
+            {/*<AdminComponent></AdminComponent>*/}
         </div>
     );
 }
