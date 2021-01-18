@@ -32,6 +32,7 @@ const ViewListOfUsers = () => {
 
                    <thead>
                        <tr>
+                           <th>UserId</th>
                             <th>Name</th>
                             <th>Email Id</th>
                             <th>Date of Birth</th>
@@ -39,6 +40,7 @@ const ViewListOfUsers = () => {
                             <th>Address</th>
                             <th>University Name</th>
                             <th>Password</th>
+                            <th>Login Ateempts</th>
                             <th>Role</th>
 
                        </tr>
@@ -58,9 +60,10 @@ const ViewListOfUsers = () => {
 function renderTableData(userList) {
     console.log("employeeList: ", userList);
     return userList.map((user, index) => {
-       const { name,dob, emailId,password,phoneNo,address,univName,role } = user //destructuring
+       const { userId, attempts,name,dob, emailId,password,phoneNo,address,univName,role } = user //destructuring
        return (
           <tr>
+              <td>{userId}</td>
              <td>{name}</td>
              <td>{emailId}</td>
              <td>{dob}</td>
@@ -68,6 +71,8 @@ function renderTableData(userList) {
              <td>{address}</td>
              <td>{univName}</td>
              <td>{password}</td>
+             <td>{attempts}</td>
+
              <td>{role}</td>
 
           </tr>
