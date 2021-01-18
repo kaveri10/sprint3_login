@@ -15,6 +15,8 @@ import HomeUserComponent from './components/user_components/home_user';
 import WelcomeComponent from './components/user_components/welcome';
 import RegisterUserComponent from './components/user_components/RegisterUserComponent';
 import { ContactForm } from './components/ContactUs';
+import AdminComponent from './components/admin_components/admin';
+import HomeAdminComponent from './components/admin_components/home_admin';
 function App() {
   return (
     <div className="App">
@@ -49,6 +51,7 @@ function App() {
       <Switch>
         <Route path='/welcome' component={WelcomeComponent} exact />
         <Route path='/' component={HomeUserComponent} exact />
+        <Route path='/admin' component={HomeAdminComponent} exact />
         <Route path='/about' component={AboutUsComponent} exact/>
         <Route path='/register' component={RegisterUserComponent} exact/>
        

@@ -40,7 +40,7 @@ export const MultipleLoginComponent = (props) =>{
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Enter Password</Form.Label>
-                        <Form.Control type="password" id="Password" name="pwd" placeholder="Enter Password" onBlur={validateUserPassword}/>
+                        <Form.Control type="password" id="Password" name="pwd" placeholder="Enter Password"/>
                     </Form.Group>
 
                     
@@ -72,21 +72,6 @@ function validateUserEmail(event)
      }
  }
 
- function validateUserPassword(event)
- {
-     const data = event.target.value;
-
-     let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-     let str = data;
-
-     if(regex.test(str) && str != "" && str != null)
-     {
-     }
-     else
-     {
-         alert("Enter valid password and Password must contain a number.");
-     }
- }
 function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -98,7 +83,7 @@ console.log(role);
     dispatch(UserLoginAction(loginObj)).then(response => {
         alert("Login Successful!!");
         if(role==="Admin"){
-            history.push('/');
+            history.push('/admin');
 
         }else if(role==="User"){
             history.push('/welcome');

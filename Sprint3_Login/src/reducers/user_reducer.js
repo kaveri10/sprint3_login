@@ -5,10 +5,13 @@ const userReducer = (state=initialState, action) => {
             return action.payload;
        case 'LOGIN':
             return action.payload;
-        case 'GET_USER':
+        case 'SHOW_USERS':
+            console.log(action.payload);
             return action.payload;
+                
         default:
             return [];
+        
     }
 }
 

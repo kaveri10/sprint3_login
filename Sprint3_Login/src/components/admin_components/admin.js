@@ -1,43 +1,11 @@
+import { Button } from "bootstrap"
+import ViewListOfUsers from "./viewUsersList"
 
-import SearchEmployee from './searchUser'
-
-import { Accordion, Card, Button } from 'react-bootstrap'
-import ViewListOfUsers from './viewUsersList';
-import { Tab, Tabs } from 'react-bootstrap'
 
 const AdminComponent = () => {
     return (
         <div>
-            {/* All underlying operations from services */}
-            <Accordion>
-
-
-                <Card>
-                    <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        Search an User
-                    </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                   
-                    <Card.Body><SearchEmployee></SearchEmployee></Card.Body>
-                 
-                    </Accordion.Collapse>
-                </Card>
-                <Card>
-                    <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                        Show All Users
-                    </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="1">
-                    {/* Fetch all Employee component */}
-                    <Card.Body><ViewListOfUsers></ViewListOfUsers></Card.Body>
-                    {/* Fetch all Employee component */}
-                    </Accordion.Collapse>
-                </Card>
-            
-            </Accordion>
+                <input type="submit" onClick={ViewListOfUsers}>View All Users</input>
         </div>
     );
 }

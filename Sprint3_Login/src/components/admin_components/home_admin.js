@@ -9,13 +9,13 @@ import { Route, Link, Switch } from 'react-router-dom';
 //Bootstrap
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
+import ViewListOfUsers from './viewUsersList';
 
 
 const HomeAdminComponent = () => {
     return (
         <div>
-            <h1>Admin Services</h1>
-            {/*<AdminComponent></AdminComponent>*/}
+            <ViewListOfUsers></ViewListOfUsers>
         </div>
     );
 }
