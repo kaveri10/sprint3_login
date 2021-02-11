@@ -58,7 +58,6 @@ const ViewListOfUsers = () => {
 
 
 function renderTableData(userList) {
-    console.log("employeeList: ", userList);
     return userList.map((user, index) => {
        const { userId, attempts,name,dob, emailId,password,phoneNo,address,univName,role } = user //destructuring
        return (
@@ -81,4 +80,3 @@ function renderTableData(userList) {
  };
 
 export default ViewListOfUsers;
-

@@ -45,9 +45,7 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/* Some Common Components if required at all */}
-
-      {/* Switching the content from nav operations */}
+      
       <Switch>
         <Route path='/welcome' component={WelcomeComponent} exact />
         <Route path='/' component={HomeUserComponent} exact />

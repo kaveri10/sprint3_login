@@ -8,7 +8,8 @@ const userReducer = (state=initialState, action) => {
         case 'SHOW_USERS':
             console.log(action.payload);
             return action.payload;
-                
+        case 'UNLOCK':
+            return action.payload;        
         default:
             return [];
         

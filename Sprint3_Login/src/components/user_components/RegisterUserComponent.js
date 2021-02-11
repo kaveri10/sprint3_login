@@ -10,13 +10,7 @@ import '../css/style.css';
 
 let dispatch;
 let history;
-let name;
-let dob;
-let email; 
-let password;
-let phone;
-let address;
-let univname;
+
 
 const RegisterUserComponent = () => {
 
@@ -38,7 +32,7 @@ const RegisterUserComponent = () => {
 
                     <Form.Group controlId="formBasicName">
                         <Form.Label>Enter Name</Form.Label>
-                        <Form.Control type="text" id="name" name="name" placeholder="Enter name" onBlur={validateUserName}/>
+                        <Form.Control type="text" id="name" name="name" placeholder="Enter name"/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicLocation">
@@ -49,32 +43,32 @@ const RegisterUserComponent = () => {
                     
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Enter Email</Form.Label>
-                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" onBlur={validateUserEmail}/>
+                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email"/>
                     </Form.Group>
 
                     
                     <Form.Group controlId="formBasicPhoneNo.">
                         <Form.Label>Phone No.</Form.Label>
-                        <Form.Control type="Number"  id="phone" name="phone" onBlur={validatePhoneNumber}/>
+                        <Form.Control type="Number"  id="phone" name="phone"/>
                     </Form.Group>                    
 
                     <Form.Group controlId="formBasicAddress">
                         <Form.Label>Enter address</Form.Label>
-                        <Form.Control type="text" id="address" name="address" placeholder="Enter address" onBlur={validateAddress}/>
+                        <Form.Control type="text" id="address" name="address" placeholder="Enter address"/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicUnivName">
                         <Form.Label>Enter univname</Form.Label>
-                        <Form.Control type="text" id="univname" name="univname" placeholder="Enter univname" onBlur={validateUnivname}/>
+                        <Form.Control type="text" id="univname" name="univname" placeholder="Enter univname"/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Enter Password</Form.Label>
-                        <Form.Control type="password" id="pwd" name="pwd" placeholder="Enter Password" onBlur={validateUserPassword}/>
+                        <Form.Control type="password" id="pwd" name="pwd" placeholder="Enter Password"/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicButton">
-                    <Button variant="dark" type="submit">Submit </Button>
+                    <Button variant="dark" type="submit" onClick={handleValidation}>Submit </Button>
                     </Form.Group>
   
                     
@@ -83,6 +77,22 @@ const RegisterUserComponent = () => {
         </div>
     );
 }
+
+function handleValidation(event){
+    const data = event.target.value;
+    const email= data.email;
+    const dob= data.dob;
+    const phone =data.phone;
+    const name = data.name;
+
+    let regex_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+     if(!(regex_email.test(email) && email != "" && email != null)){
+        alert("Email not proper");
+     }
+    
+}
+
 function validateUserName(event)
  {
      const data = event.target.value;
@@ -93,6 +103,7 @@ function validateUserName(event)
 
      if(regex.test(str) && str != "" && str != null)
      {
+         
      }
      else
      {

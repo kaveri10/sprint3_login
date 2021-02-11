@@ -10,12 +10,15 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'; 
 import ViewListOfUsers from './viewUsersList';
+import UnlockUserComponent from './unlock';
 
 
 const HomeAdminComponent = () => {
     return (
         <div>
-            <ViewListOfUsers></ViewListOfUsers>
+            
+             <ViewListOfUsers></ViewListOfUsers> 
+           <UnlockUserComponent></UnlockUserComponent>
         </div>
     );
 }
